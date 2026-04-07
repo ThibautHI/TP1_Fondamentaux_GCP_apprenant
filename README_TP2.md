@@ -158,3 +158,41 @@ TotalHours : 7,32229722222222E-05
 TotalMinutes : 0,00439337833333333
 TotalSeconds : 0,2636027
 TotalMilliseconds : 263,6027
+
+# Partie 5 — Networking GCP : VPC & Firewall
+
+Cette partie nous a permis de comprendre comment isoler et sécuriser nos ressources sur GCP.
+
+## 5.1 — VPC & Subnets
+Nous avons créé un VPC personnalisé pour un contrôle total sur l'adressage :
+```powershell
+# Création du VPC
+gcloud compute networks create tp2-vpc --subnet-mode=custom
+
+# Création des sous-réseaux
+gcloud compute networks subnets create tp2-subnet-public `
+--network=tp2-vpc --region=europe-west9 --range=10.10.1.0/24
+
+gcloud compute networks subnets create tp2-subnet-private `
+--network=tp2-vpc --region=europe-west9 --range=10.10.2.0/24
+```
+
+**Question :** Pourquoi sépare-t-on les ressources applicatives et les bases de données dans des sous-réseaux différents ?
+**Réponse :** Pour appliquer le principe de **défense en profondeur**. En isolant la base de données dans un sous-réseau privé (sans IP publique), on s'assure qu'elle n'est pas accessible directement depuis Internet, même si le pare-feu est mal configuré. Seul le sous-réseau public (où se trouve l'application) peut communiquer avec elle.
+
+## 5.2 — Firewall Rules
+Configuration des accès entrants (INGRESS) :
+```powershell
+# Autoriser HTTP et HTTPS pour le tag 'http-server'
+gcloud compute firewall-rules create tp2-allow-http --network=tp2-vpc --direction=INGRESS --action=ALLOW --rules=tcp:80 --source-ranges=0.0.0.0/0 --target-tags=http-server
+gcloud compute firewall-rules create tp2-allow-https --network=tp2-vpc --direction=INGRESS --action=ALLOW --rules=tcp:443 --source-ranges=0.0.0.0/0 --target-tags=http-server
+
+# Autoriser Postgres UNIQUEMENT depuis le subnet public
+gcloud compute firewall-rules create tp2-allow-postgres --network=tp2-vpc --direction=INGRESS --action=ALLOW --rules=tcp:5432 --source-ranges=10.10.1.0/24 --target-tags=db-server
+```
+
+**Question :** Quelle est la différence entre un Security Group (AWS) et une Firewall Rule (GCP) ?
+**Réponse :** 
+1. **Scope** : Un SG AWS est rattaché à une interface réseau (instance), alors qu'une règle GCP est définie au niveau du VPC et cible les instances via des **Network Tags**.
+2. **Flexibilité** : GCP permet des règles d'autorisation (ALLOW) et de refus (DENY). AWS SG ne gère que l'autorisation (le refus est implicite).
+3. **Ciblage** : GCP utilise les tags de manière très dynamique pour appliquer des règles à des groupes d'instances sans modifier leur configuration réseau.
