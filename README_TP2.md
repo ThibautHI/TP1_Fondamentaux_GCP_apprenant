@@ -105,10 +105,56 @@ docker push $IMAGE_TAG
 ```
 
 **Vérification de l'image distantes :**
+
+```powershell
 $PROJECT_ID = (gcloud config get-value project)
+gcloud artifacts docker images list "europe-west9-docker.pkg.dev/${PROJECT_ID}/tp2-registry/tp2-app"
+```
 
-> > gcloud artifacts docker images list "europe-west9-docker.pkg.dev/${PROJECT_ID}/tp2-registry/tp2-app"
-> > Listing items under project developper-pour-le-cloud, location europe-west9, repository tp2-registry.
+# Partie 4 — Déploiement sur Cloud Run
 
-IMAGE DIGEST CREATE_TIME UPDATE_TIME SIZE
-europe-west9-docker.pkg.dev/developper-pour-le-cloud/tp2-registry/tp2-app sha256:29ae6402a364b35b86cb5d071fd8f3929378f19f3e261a11561d39456215428b 2026-04-07T10:02:57 2026-04-07T10:02:57
+Cloud Run permet de déployer des conteneurs de manière serverless.
+
+## 4.1 — Déploiement du Service
+
+Commande utilisée pour le déploiement initial :
+
+```powershell
+$PROJECT_ID = (gcloud config get-value project)
+$IMAGE = "europe-west9-docker.pkg.dev/$PROJECT_ID/tp2-registry/tp2-app:v1"
+
+gcloud run deploy tp2-service `
+--image=$IMAGE `
+--region=europe-west9 `
+--platform=managed `
+--allow-unauthenticated `
+--port=8080 `
+--memory=512Mi `
+--cpu=1 `
+--max-instances=3 `
+--set-env-vars="APP_ENV=production"
+```
+
+## 4.2 — Tests du Déploiement Public
+
+L'URL publique générée est : `https://tp2-service-856724546283.europe-west9.run.app/`
+
+### Test
+
+{"message":"Hello from YNOV Cloud TP2","version":"2.0.0","stage":"production"}
+
+## 4.3 - Tests de performance
+
+Measure-Command { Invoke-RestMethod https://tp2-service-856724546283.europe-west9.run.app/health }
+
+Days : 0
+Hours : 0
+Minutes : 0
+Seconds : 0
+Milliseconds : 263
+Ticks : 2636027
+TotalDays : 3,05095717592593E-06
+TotalHours : 7,32229722222222E-05
+TotalMinutes : 0,00439337833333333
+TotalSeconds : 0,2636027
+TotalMilliseconds : 263,6027
