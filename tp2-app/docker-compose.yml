@@ -11,9 +11,24 @@ services:
       - DB_NAME=ynov_db
       - DB_USER=ynov
       - DB_PASSWORD=secret_password
+      - REDIS_HOST=cache
+      - REDIS_PORT=6379
     depends_on:
       db:
-        condition: service_healthy # Attendre que le healthcheck PostgreSQL soit healthy
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  # Service Redis (Cache)
+  cache:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
     networks:
       - app-network
 
