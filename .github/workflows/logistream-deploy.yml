@@ -12,6 +12,11 @@ env:
   GKE_REGION: ${{ secrets.GKE_REGION }}
   REGISTRY: europe-west9-docker.pkg.dev
 
+permissions:
+  contents: read
+  id-token: write
+
+
 jobs:
   # ==========================================================
   # Job 1 : Tests (s'exécute sur chaque PR et chaque push)
