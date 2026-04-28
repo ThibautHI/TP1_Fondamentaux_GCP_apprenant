@@ -23,25 +23,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      - name: Installer les dépendances
-        run: |
-          # Installer les dépendances pour chaque service si nécessaire
-          # Ici on simule une installation à la racine
-          npm install || echo "Pas de package.json à la racine"
-      - name: Tests unitaires
-        run: |
-          # En production, on lancerait npm test dans chaque dossier
-          echo "Exécution des tests unitaires..."
-      - name: Lint du code
-        run: |
-          echo "Lint non configuré — skip"
+          node-version: '22'
+      - name: Vérifier la structure
+        run: ls -R
       - name: Valider les manifests Kubernetes
         run: |
-          # Installer kubeval pour valider les YAML Kubernetes
           curl -sL https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz | tar xz
           ./kubeval k8s/*.yaml --ignore-missing-schemas
+
 
   # ==========================================================
   # Job 2 : Build & Push (uniquement sur push main)
