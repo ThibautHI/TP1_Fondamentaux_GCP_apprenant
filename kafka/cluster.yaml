@@ -1,12 +1,13 @@
-apiVersion: kafka.strimzi.io/v1beta2
+apiVersion: kafka.strimzi.io/v1
 kind: Kafka
 metadata:
   name: logistream-kafka
   namespace: logistream
+  annotations:
+    strimzi.io/node-pools: "enabled"
 spec:
   kafka:
-    version: 3.7.0
-    replicas: 3
+    version: 4.1.1
     listeners:
       - name: plain
         port: 9092
@@ -22,17 +23,6 @@ spec:
       min.insync.replicas: 2
       log.retention.hours: 168
       message.max.bytes: 10240
-    resources:
-      requests:
-        memory: 1Gi
-        cpu: 500m
-      limits:
-        memory: 2Gi
-        cpu: "1"
-    storage:
-      type: persistent-claim
-      size: 20Gi
-      deleteClaim: true
   entityOperator:
     topicOperator: {}
     userOperator: {}
