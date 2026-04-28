@@ -1463,15 +1463,15 @@ Métrique Valeur observée
 ```
 
 ```
-CPU moyen tracker-consumer _______ %
+CPU moyen tracker-consumer 23 %
 ```
 
 ```
-RAM moyenne tracker-consumer _______ Mi
+RAM moyenne tracker-consumer 23 Mi
 ```
 
 ```
-Pods HPA actifs au repos _______
+Pods HPA actifs au repos 3
 ```
 
 **Question :** Vous observez que le consumer lag sur truck-positions monte progressivement au cours du
