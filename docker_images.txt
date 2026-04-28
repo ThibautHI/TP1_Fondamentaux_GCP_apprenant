@@ -1,0 +1,43 @@
+﻿IMAGE                                                                                                   ID             DISK USAGE   CONTENT SIZE   EXTRA
+adminer:5.2.1                                                                                           44926b66af50        171MB         46.2MB   U    
+cloudshop/api-gateway:latest                                                                            bcddfbe62778        202MB         49.3MB        
+cloudshop/auth-service:latest                                                                           3e20a0281638        199MB         48.8MB        
+cloudshop/frontend:latest                                                                               cdd808b148ea       20.8MB         5.79MB        
+cloudshop/orders-api:latest                                                                             7d9d094232d2         28MB         8.21MB        
+cloudshop/products-api:latest                                                                           e7e287ae6dcc        175MB         42.1MB        
+cuisine-app:latest                                                                                      cb2335bc6597       1.71GB          377MB   U    
+developper_pour_le_cloud:latest                                                                         442d96b5a32a        199MB         48.5MB   U    
+docker/desktop-kubernetes:kubernetes-v1.34.1-cni-v1.7.1-critools-v1.33.0-cri-dockerd-v0.3.20-1-debian   12d6673564e0        592MB          185MB        
+docker/desktop-storage-provisioner:v3.0                                                                 57d2b6ad1c6f       80.3MB         23.9MB        
+docker/desktop-vpnkit-controller:v4.0                                                                   bdaff3408b1c       52.6MB         11.9MB        
+europe-west9-docker.pkg.dev/developper-pour-le-cloud/tp2-registry/tp2-app:v1                            414c90e3d956        203MB         50.1MB        
+europe-west9-docker.pkg.dev/developper-pour-le-cloud/tp2-registry/tp2-app:v2                            2a3165fbc2a4        203MB         50.1MB        
+ghcr.io/dexidp/dex:v2.43.0                                                                              b08a58c9731c        176MB         43.1MB        
+mariadb:11.7.2                                                                                          fcc7fcd7114a        458MB          109MB   U    
+moby/buildkit:buildx-stable-1                                                                           37539dd4d60f        352MB          110MB   U    
+nginx:1.27-alpine                                                                                       65645c7bb6a0       74.5MB         21.9MB   U    
+postgres:15-alpine                                                                                      5fe8ca7fc662        392MB          110MB   U    
+postgres:16-alpine                                                                                      97ff59a4e30e        395MB          111MB   U    
+public.ecr.aws/docker/library/redis:8.2.3-alpine                                                        08ad0b1d2808        101MB           28MB        
+quay.io/argoproj/argocd:v3.3.2                                                                          5882f28f7aae        739MB          191MB        
+rapha-back:latest                                                                                       c00c41856704        399MB          136MB        
+recette-project-front:latest                                                                            fc952eea77ee         75MB         20.7MB   U    
+recette-project-php:latest                                                                              71c8c5861114        429MB         61.6MB   U    
+redis:7-alpine                                                                                          8b81dd37ff02       61.2MB         17.7MB   U    
+registry.k8s.io/coredns/coredns:v1.12.1                                                                 e8c262566636        101MB         22.4MB        
+registry.k8s.io/etcd:3.6.4-0                                                                            e36c08168342        273MB         74.3MB        
+registry.k8s.io/kube-apiserver:v1.34.1                                                                  b9d7c117f8ac        118MB         27.1MB        
+registry.k8s.io/kube-controller-manager:v1.34.1                                                         2bf47c1b01f5        101MB         22.8MB        
+registry.k8s.io/kube-proxy:v1.34.1                                                                      913cc83ca0b5        102MB           26MB        
+registry.k8s.io/kube-scheduler:v1.34.1                                                                  6e9fbc4e25a5       73.5MB         17.4MB        
+registry.k8s.io/pause:3.10                                                                              ee6521f290b2       1.06MB          318kB        
+registry.k8s.io/pause:3.10.1                                                                            278fb9dbcca9       1.06MB          318kB        
+td-jour6-api-gateway:latest                                                                             dea0131e1d05       99.9MB         25.8MB   U    
+td-jour6-auth-service:latest                                                                            205e0b41b9c2       96.5MB         25.3MB   U    
+td-jour6-frontend:latest                                                                                e7922d688b4b       20.8MB         5.79MB   U    
+td-jour6-orders-api:latest                                                                              ab090962d37d       13.5MB         2.95MB   U    
+td-jour6-products-api:latest                                                                            fa130fcac0a7        175MB         42.1MB   U    
+tp2-app-web:latest                                                                                      518d7d08ee18        217MB         51.1MB   U    
+tp2-app:v1                                                                                              414c90e3d956        203MB         50.1MB        
+tp2-app:v2                                                                                              2a3165fbc2a4        203MB         50.1MB        
+tp2-naive:v1                                                                                            7ae683cf0d09        281MB         64.1MB        
