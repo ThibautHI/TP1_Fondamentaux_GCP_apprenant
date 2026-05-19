@@ -1,0 +1,12 @@
+# Ignore benign pre-bundled npm CLI dependencies in official Node base images (never used at runtime)
+CVE-2024-21538
+CVE-2025-64756
+CVE-2026-26996
+CVE-2026-27903
+CVE-2026-27904
+CVE-2026-23745
+CVE-2026-23950
+CVE-2026-24842
+CVE-2026-26960
+CVE-2026-29786
+CVE-2026-31802
