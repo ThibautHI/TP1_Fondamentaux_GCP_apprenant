@@ -1,4 +1,4 @@
-apiVersion: kafka.strimzi.io/v1beta2
+apiVersion: kafka.strimzi.io/v1
 kind: KafkaNodePool
 metadata:
   name: controller-broker
@@ -14,6 +14,7 @@ spec:
     type: persistent-claim
     size: 20Gi
     deleteClaim: true
+    class: kafka-standard-hdd
   resources:
     requests:
       memory: 1Gi

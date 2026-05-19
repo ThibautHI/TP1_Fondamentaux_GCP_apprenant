@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gps-producer
-        image: europe-west9-docker.pkg.dev/developper-pour-le-cloud/tp2-registry/gps-producer:v1
+        image: europe-west9-docker.pkg.dev/ynov-tp4-devsecops-39482/tp2-registry/gps-producer:v1
         envFrom:
         - configMapRef:
             name: logistream-config
@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
       - name: tracker-consumer
-        image: europe-west9-docker.pkg.dev/developper-pour-le-cloud/tp2-registry/tracker-consumer:v1
+        image: europe-west9-docker.pkg.dev/ynov-tp4-devsecops-39482/tp2-registry/tracker-consumer:v1
         envFrom:
         - configMapRef:
             name: logistream-config

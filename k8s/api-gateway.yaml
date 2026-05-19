@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: europe-west9-docker.pkg.dev/developper-pour-le-cloud/tp2-registry/tp2-app:v1
+        image: europe-west9-docker.pkg.dev/ynov-tp4-devsecops-39482/tp2-registry/tp2-app:v1
         ports:
         - containerPort: 8080
         envFrom:
