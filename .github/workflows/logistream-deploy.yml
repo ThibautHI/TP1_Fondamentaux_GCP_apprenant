@@ -99,21 +99,25 @@ jobs:
 
       - name: Scanner GPS Producer pour les vulnérabilités
         run: |
+          SHA="${{ github.sha }}"
+          PRODUCER_TAG="${REGISTRY}/${PROJECT_ID}/tp2-registry/gps-producer:${SHA}"
           trivy image \
             --exit-code 1 \
             --severity "CRITICAL,HIGH" \
             --ignore-unfixed \
             --format table \
-            ${{ needs.build-push.outputs.producer-tag }}
+            ${PRODUCER_TAG}
 
       - name: Scanner Tracker Consumer pour les vulnérabilités
         run: |
+          SHA="${{ github.sha }}"
+          CONSUMER_TAG="${REGISTRY}/${PROJECT_ID}/tp2-registry/tracker-consumer:${SHA}"
           trivy image \
             --exit-code 1 \
             --severity "CRITICAL,HIGH" \
             --ignore-unfixed \
             --format table \
-            ${{ needs.build-push.outputs.consumer-tag }}
+            ${CONSUMER_TAG}
 
   # ==========================================================
   # Job 3 : Deploy sur GKE
